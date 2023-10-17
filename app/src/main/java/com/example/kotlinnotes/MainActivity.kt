@@ -2,31 +2,56 @@ package com.example.kotlinnotes
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.kotlinnotes.ui.theme.KotlinNotesTheme
+import android.widget.EditText
+import android.widget.TextView
+import android.widget.Button
+import android.app.AlertDialog
+import android.content.Intent
 
 class MainActivity : ComponentActivity() {
+
+    lateinit var textBienvenue: TextView
+    lateinit var name: EditText
+    lateinit var button: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            KotlinNotesTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-                    Greeting("Android")
-                }
-            }
+        setContentView(R.layout.activity_main)
+
+        textBienvenue = findViewById(R.id.lblBienvenue)
+        name = findViewById(R.id.txtName)
+        button = findViewById(R.id.btnValiderAccueil)
+
+        textBienvenue.setText("Bienvenue sur cette application, merci d'inscrire votre prénom ci-dessous")
+
+        button.setOnClickListener(){
+            ValiderBouton()
+        }
+    }
+
+    fun ValiderBouton(){
+        if(name.text.toString() == "")
+        {
+            val builder = AlertDialog.Builder(this)
+            builder.setMessage("Veuillez renseigner votre prénom")
+            /*builder.setPositiveButton("OK") { dialog, which ->
+                // Code à exécuter lorsque l'utilisateur clique sur le bouton "OK"
+            }*/
+            builder.show()
+
+        }
+        else
+        {
+            var prenom: String = name.text.toString()
+
+            // Redirection vers une autre page (nouvelle activité)
+            val intent = Intent(this, NoteActivity::class.java)
+            intent.putExtra("prenom", prenom)
+            startActivity(intent)
         }
     }
 }
 
-@Composable
+/*@Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     Text(
         text = "Hello $name!",
@@ -40,4 +65,4 @@ fun GreetingPreview() {
     KotlinNotesTheme {
         Greeting("Android")
     }
-}
+}*/

@@ -10,14 +10,15 @@
         android:layout_height="wrap_content"
         android:text="TextView" />
 
-    <androidx.recyclerview.widget.RecyclerView
+    <ListView
         android:id="@+id/lstNote"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="422dp" />
 
     <Button
         android:id="@+id/btnAdd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Ajouter une note" />
+
 </LinearLayout>

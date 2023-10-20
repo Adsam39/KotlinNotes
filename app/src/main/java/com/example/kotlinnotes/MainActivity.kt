@@ -33,9 +33,6 @@ class MainActivity : ComponentActivity() {
         {
             val builder = AlertDialog.Builder(this)
             builder.setMessage("Veuillez renseigner votre prénom")
-            /*builder.setPositiveButton("OK") { dialog, which ->
-                // Code à exécuter lorsque l'utilisateur clique sur le bouton "OK"
-            }*/
             builder.show()
 
         }
@@ -50,19 +47,3 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
-/*@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    KotlinNotesTheme {
-        Greeting("Android")
-    }
-}*/
